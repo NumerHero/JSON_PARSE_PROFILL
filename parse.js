@@ -49,7 +49,9 @@ function main (json) {
         break;
 
         case ':':
-          STATE_STACK.push('HOPE_EVAL');
+            if (getStackTop(STATE_STACK) !== "KEY_START") {
+                STATE_STACK.push('HOPE_EVAL');
+            }
         break;
 
         case ',':
@@ -214,4 +216,6 @@ function main (json) {
     // console.log('object_stack:', OBJECT_STACK);
     // console.log('key_stack:', KEY_STACK);
     return result;
-  }
+}
+
+module.exports = main;
